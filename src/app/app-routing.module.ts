@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  
+  { path: 'registrarse', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) },
   { path: 'mi-cuenta', loadChildren: () => import('./pages/my-account/my-account.module').then(m => m.MyAccountModule) },
   { path: '', loadChildren: () => import('./pages/main-page/main-page.module').then(m => m.MainPageModule) },
   { path: '**', redirectTo: '', pathMatch: 'full' }

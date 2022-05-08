@@ -7,20 +7,18 @@
         </div>
         <div class="input-field col s12">
           <i class="material-icons prefix">mail_outline</i>
-          <input class="validate" id="email" type="email">
+          <input class="validate" id="email" type="email" required>
           <label for="email" data-error="wrong" data-success="right">Email</label>
         </div>
         <div class="input-field col s12">
           <i class="material-icons prefix">lock_outline</i>
-          <input id="password" type="password">
+          <input id="password" type="password" required>
           <label for="password">Password</label>
         </div>
-        <div class="input-field col s12">
-          <a type="submit" class="waves-effect waves-light blue accent-2 btn col s12">INICIAR SESIÓN</a>
-        </div>
+        <button class="btn waves-effect waves-light blue accent-2 col s12 l10 offset-l1" type="submit" name="action">INICIAR SESIÓN</button>
       </form>
       <div class="input-field col s12">
-        <a href="#" class="register-btn btn col s12">REGISTRARSE</a>
+        <a routerLink="/registrarse" class="register-btn btn col s12 l10 offset-l1">REGISTRARSE</a>
       </div>
     </div>
   </div>
