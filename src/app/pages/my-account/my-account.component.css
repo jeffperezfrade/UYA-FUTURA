@@ -1,0 +1,26 @@
+.register-btn{
+  background-color: white;
+  color: #448aff;
+  border-style: groove;
+  border-width: 0.5px;
+}
+
+.register-btn:hover{
+  color: white;
+  background-color:#448aff;
+  border-style: groove;
+  border-width: 0.5px;
+  border-color: #448aff ;
+}
+
+.card-content{
+  font-size: 30px;
+  text-decoration: underline;
+  text-decoration-color: #448aff;
+}
+
+.card{
+  border-style: groove;
+  border-width: 0.5px;
+  border-color: #448aff;
+}
