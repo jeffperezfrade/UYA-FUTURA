@@ -17,6 +17,10 @@ export class HeaderComponent implements OnInit {
     var sidenavElement = document.querySelectorAll('.sidenav');
     var dropdownElement = document.querySelectorAll('.dropdown-trigger');
     var sidenavInstance = M.Sidenav.init(sidenavElement);
-    var dropdownInstance = M.Dropdown.init(dropdownElement);
+    // Añadimos opciones al Dropdown.
+    var dropdownInstance = M.Dropdown.init(dropdownElement, {
+      coverTrigger: false,
+      closeOnClick: false
+    });
   }
 }
