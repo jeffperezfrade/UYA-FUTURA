@@ -1,0 +1,8 @@
+.card-content{
+  height: 140px;
+}
+
+.card-content p {
+  font-size: larger;
+  font-weight: 600;
+}
