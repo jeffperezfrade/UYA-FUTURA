@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/models/User';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,7 +13,7 @@ export class RegisterComponent {
   
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(private fb: FormBuilder, private userService: UserService, private toastr: ToastrService) {
     this.form = this.fb.group({
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
@@ -31,9 +32,12 @@ export class RegisterComponent {
     console.log(user);
     this.userService.saveUser(user).then(() => {
       console.log('Usuario registrado!');
+      // Toast success
+      this.toastr.success('Usuario añadido a Firebase!, Tarjeta registrada.')
       // Limpiamos el formulario.
       this.form.reset();
     }, error => {
+      this.toastr.error('Ha ocurrido un error.', `${error}`);
       console.log(error);
     });
   }
