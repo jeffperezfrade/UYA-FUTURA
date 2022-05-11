@@ -1,3 +1,13 @@
 hr{
   color: #448aff;
 }
+
+.password-info{
+  color: #686868;
+  display: none;
+}
+
+.red-info{
+  display: flex;
+  color: rgb(141, 20, 20);
+}
