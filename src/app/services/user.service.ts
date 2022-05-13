@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 import { User } from '../models/User';
 
 @Injectable({
@@ -13,6 +14,12 @@ export class UserService {
     // Agrega un nuevo usuario a la colección de usuarios.
     // Si la colección no existe la crea y añade el usuario.
     return this.firebase.collection('user').add(user);
+  }
+
+  getUsers(): Observable<any> {
+    // snapshotChanges() se ejecuta cada vez que detecta un cambio.
+    return this.firebase.collection('user').snapshotChanges();
+    // return this.firebase.collection('user').get();
   }
 
 }

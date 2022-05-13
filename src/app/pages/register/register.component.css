@@ -11,3 +11,7 @@ hr{
   display: flex;
   color: rgb(141, 20, 20);
 }
+
+.preloader-wrapper{
+  margin-left: 20px;
+}

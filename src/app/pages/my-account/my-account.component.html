@@ -1,19 +1,19 @@
 <div class="container section">
   <div class="row">
     <div class="card hoverable col s12 m12 l8 offset-l2">
-      <form class="login-form">
+      <form [formGroup]="form" (ngSubmit)="signIn()">
         <div class="card-content center-align">
           <p>Inicio de Sesión</p>
         </div>
         <div class="input-field col s12">
           <i class="material-icons prefix">mail_outline</i>
-          <input class="validate" id="email" type="email" required>
-          <label for="email" data-error="wrong" data-success="right">Email</label>
+          <input formControlName="email" class="validate" id="email" type="email" class="validate" required>
+          <label for="email"><b>Email</b></label>
         </div>
         <div class="input-field col s12">
           <i class="material-icons prefix">lock_outline</i>
-          <input id="password" type="password" required>
-          <label for="password">Password</label>
+          <input formControlName="password" id="password" type="password" class="validate" required>
+          <label for="password"><b>Password</b></label>
         </div>
         <button class="btn waves-effect waves-light blue accent-2 col s12 l10 offset-l1" type="submit" name="action">INICIAR SESIÓN</button>
       </form>
