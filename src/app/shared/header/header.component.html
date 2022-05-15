@@ -6,7 +6,9 @@
         <i class="material-icons">menu</i>
       </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a routerLink="/mi-cuenta"><i class="material-icons left">person</i>Mi cuenta</a></li>
+        <li><a href="#" *ngIf="userLogged|async as user">{{user.email}}</a></li>
+        <li><a routerLink="/mi-cuenta" *ngIf="!isLogged"><i class="material-icons left">person</i>Iniciar Sesión</a></li>
+        <li><a (click)="signOut()" *ngIf="isLogged"><i class="material-icons left">person</i>Cerrar Sesión</a></li>
         <li><a href=""><i class="material-icons left">shopping_cart</i>Carrito</a></li>
       </ul>
     </div>

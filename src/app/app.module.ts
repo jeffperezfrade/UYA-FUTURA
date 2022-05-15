@@ -28,7 +28,6 @@ import { environment } from '../environments/environment';
     ToastrModule.forRoot(), // ToastrModule added
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
-
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Sidenav } from 'materialize-css';
 import { Dropdown } from 'materialize-css';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,16 @@ import { Dropdown } from 'materialize-css';
 
 export class HeaderComponent implements OnInit {
 
-  constructor() {}
+  userLogged = this.authService.getUserLogged();
+  isLogged = this.authService.isLogged();
+
+  constructor(private authService: AuthService) {}
+
+  async signOut(){
+    console.log(`Cerrando Sesión ...`);
+    this.authService.signOut();
+    console.log(this.authService.isLogged());
+  }
 
   ngOnInit(): void {
     // Inicializamos los objetos del Sidenav (mobile responsive) y el Dropdown.
