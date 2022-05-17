@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import firebase from 'firebase/compat/app'
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'sign-in',
@@ -21,29 +22,20 @@ export class SignInComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    public auth: AngularFireAuth) { 
+    public auth: AngularFireAuth,
+    private toastr: ToastrService) { 
     // this.form = this.fb.group({
     //   email: ['', [Validators.required, Validators.email]],
     //   password: ['', Validators.required],
     // });
    }
 
-  // signIn() {
-  //   console.log(`Email: ${this.form.value.email}`);
-  //   console.log(`Password: ${this.form.value.password}`);
-  //     this.authService.signIn(this.form.value.email, this.form.value.password).then(res => {
-  //       console.log(`Usuario logeado: ${res}`);
-  //       //this.router.navigate(['/']);
-  //     }).catch(function(e) {
-  //       console.log(`${e}`); // "oh, no!"
-  //   })
-  // }
-
   async signIn() {
     this.loadingSpinner = true;
     try {
       await this.auth.signInWithEmailAndPassword(this.email, this.password);
       this.loadingSpinner = false;
+      this.toastr.success('Se ha iniciado sesión!');
       this.router.navigate(['/']);
     } catch (err) {
       console.log(`Sign In login Error: ${err}`);

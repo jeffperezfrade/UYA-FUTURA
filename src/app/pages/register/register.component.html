@@ -27,6 +27,7 @@
           <p class="password-info" [class.red-info]="this.form.get('password')?.invalid && this.form.get('password')?.touched">	&bull; La contraseña debe tener al menos 8 caracteres.</p>
         </div>
       </div>
+      <div class="error-div" *ngIf="error"> &bull; El email ya ha sido registrado</div>
       <div class="row">
         <button [disabled]="form.invalid" class="btn waves-effect waves-light blue accent-2 hoverable col l3 s10" name="action">Enviar
             <i class="material-icons right">send</i>

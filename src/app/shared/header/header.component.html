@@ -7,7 +7,6 @@
       </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <div *ngIf="userLogged|async as user; else notLogged">
-          <li><a href="#" *ngIf="userLogged|async as user">{{user.email}}</a></li>
           <li><a routerLink="/mi-cuenta" *ngIf="userLogged|async"><i class="material-icons left">person</i>Mi Cuenta</a></li>  
           <li><a href=""><i class="material-icons left">shopping_cart</i>Carrito</a></li>
         </div>

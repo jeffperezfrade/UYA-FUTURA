@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+
   form: FormGroup;
   loadingSpinner = false;
   emailsDatabase: string[] = [];
@@ -41,14 +42,16 @@ export class RegisterComponent implements OnInit {
         this.form.value.password
       )
       .then(() => {
-        this.toastr.success('Usuario añadido a Firebase!, Tarjeta registrada.');
-
-        this.loadingSpinner = false;
+        this.toastr.success('Usuario añadido a Firebase!, Usuario registrado.');
+        // Evitamos que inicie sesion automáticamente.
         this.auth.signOut();
+        this.loadingSpinner = false;
+        // Redirigimos al inicio de sesion.
         this.router.navigate(['/iniciar-sesion']);
       })
       .catch( (error) => {
         // Handle Errors here.
+        this.error = error;
         var errorCode = error.code;
         var errorMessage = error.message;
         if (errorCode == 'auth/email-already-in-use') {
@@ -62,6 +65,16 @@ export class RegisterComponent implements OnInit {
         console.log(error);
         this.loadingSpinner = false;
         this.form.reset();
+      });
+      // Actualizamos el nombre.
+      this.auth.currentUser.then((user) =>{
+        user?.updateProfile({
+          displayName: this.form.value.first_name + ' ' + this.form.value.last_name,
+        }).then(function() {
+          // Update successful.
+        }, function(error) {
+          // An error happened.
+      });
       });
   }
   /**
