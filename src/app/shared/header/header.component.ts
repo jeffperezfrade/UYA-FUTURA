@@ -14,12 +14,15 @@ export class HeaderComponent implements OnInit {
   userLogged = this.authService.getUserLogged();
   isLogged = this.authService.isLogged();
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) {
+    console.log(this.userLogged);
+  }
 
   async signOut(){
     console.log(`Cerrando Sesión ...`);
-    this.authService.signOut();
-    console.log(this.authService.isLogged());
+    this.authService.signOut().then(res => {
+      console.log(res);
+    })
   }
 
   ngOnInit(): void {

@@ -13,7 +13,7 @@
   border-color: #448aff ;
 }
 
-.card-content{
+.card-content .card-title{
   font-size: 30px;
   text-decoration: underline;
   text-decoration-color: #448aff;
@@ -23,4 +23,13 @@
   border-style: groove;
   border-width: 0.5px;
   border-color: #448aff;
+}
+
+.btn{
+  margin: 10px;
+}
+
+.error-div{
+  color: rgb(172, 28, 28);
+  text-align: center;
 }

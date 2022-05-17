@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/models/User';
 import { UserService } from 'src/app/services/user.service';
@@ -9,16 +11,18 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-
 export class RegisterComponent implements OnInit {
   form: FormGroup;
   loadingSpinner = false;
   emailsDatabase: string[] = [];
+  error: any;
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public auth: AngularFireAuth,
+    private router: Router
   ) {
     this.form = this.fb.group({
       first_name: ['', Validators.required],
@@ -30,48 +34,40 @@ export class RegisterComponent implements OnInit {
   /**
    * Registra un nuevo usuario a la base de datos.
    */
-  onSubmit() {
-    const user: User = {
-      first_name: this.form.value.first_name,
-      last_name: this.form.value.last_name,
-      email: this.form.value.email,
-      password: this.form.value.password,
-    };
-
-    console.log(`Usuario a insertar: ${user}`);
-
+  async register() {
     this.loadingSpinner = true;
-    // Verificamos si el email ya existe en la base de datos.
-    if (this.checkEmailAvailability(user.email)) {
-      this.userService.saveUser(user).then(
-        () => {
-          this.loadingSpinner = false;
-          console.log('Usuario registrado!');
-          // Toast success
-          this.toastr.success(
-            'Usuario añadido a Firebase!, Tarjeta registrada.'
+    await this.auth.createUserWithEmailAndPassword(
+        this.form.value.email,
+        this.form.value.password
+      )
+      .then(() => {
+        this.toastr.success('Usuario añadido a Firebase!, Tarjeta registrada.');
+
+        this.loadingSpinner = false;
+        this.auth.signOut();
+        this.router.navigate(['/iniciar-sesion']);
+      })
+      .catch( (error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        if (errorCode == 'auth/email-already-in-use') {
+          this.toastr.error(
+            'El email ya existe.',
+            'El usuario ya ha sido registrado'
           );
-          // Limpiamos el formulario.
-          this.form.reset();
-        },
-        (error) => {
-          this.loadingSpinner = false;
-          this.toastr.error('Ha ocurrido un error.', `${error}`);
-          console.log(error);
+        } else {
+          alert(errorMessage);
         }
-      );
-    } else {
-      this.loadingSpinner = false;
-      this.toastr.error(
-        'El email ya existe.',
-        'El usuario ya ha sido registrado'
-      );
-    }
+        console.log(error);
+        this.loadingSpinner = false;
+        this.form.reset();
+      });
   }
   /**
    * Indica si el email esta disponible o no.
    * @param email Email a buscar en Firebase.
-   * @returns Devuelve un booleano 
+   * @returns Devuelve un booleano
    */
   checkEmailAvailability(email: string): boolean {
     let available: boolean = true;
@@ -91,8 +87,8 @@ export class RegisterComponent implements OnInit {
         doc.forEach((user: any) => {
           this.emailsDatabase.push(user.payload.doc.data().email);
         });
-        resolve (this.emailsDatabase);
-      })
+        resolve(this.emailsDatabase);
+      });
     });
   }
   /**
@@ -100,6 +96,6 @@ export class RegisterComponent implements OnInit {
    */
   ngOnInit() {
     // Carga todos los emails de firebase al entrar en esta pagina.
-    this.getEmails().then(data => {});
+    this.getEmails().then((data) => {});
   }
 }

@@ -28,10 +28,9 @@ export class AuthService {
   }
 
   signOut(){
-    this.afauth.signOut().then(() => {
-      console.log(`Usuario deslogeado ...`);
-    })
-  }
+    localStorage.clear();
+    return this.afauth.signOut();
+  } 
 
   getUserLogged() {
     return this.afauth.authState;

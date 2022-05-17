@@ -3,7 +3,7 @@
   <p>Los datos se guardarán en el <b>Firebase</b> de la Tienda.</p>
   <hr>
   <div class="row">
-    <form class="col s12" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form class="col s12" [formGroup]="form" (ngSubmit)="register()">
       <div class="row">
         <div class="input-field col s6">
           <input formControlName="first_name" id="first_name" type="text" class="validate" required>
@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="row">
-        <button [disabled]="form.invalid" class="btn waves-effect waves-light blue accent-2 hoverable col l3 s10" type="submit" name="action">Enviar
+        <button [disabled]="form.invalid" class="btn waves-effect waves-light blue accent-2 hoverable col l3 s10" name="action">Enviar
             <i class="material-icons right">send</i>
         </button>
         <div *ngIf="this.loadingSpinner" class="preloader-wrapper small active">

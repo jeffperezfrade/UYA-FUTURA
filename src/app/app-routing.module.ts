@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  { path: 'mi-cuenta', loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule) },
   { path: 'registrarse', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) },
-  { path: 'mi-cuenta', loadChildren: () => import('./pages/my-account/my-account.module').then(m => m.MyAccountModule) },
+  { path: 'iniciar-sesion', loadChildren: () => import('./pages/sign-in/sign-in.module').then(m => m.SignInModule) },
   { path: '', loadChildren: () => import('./pages/main-page/main-page.module').then(m => m.MainPageModule) },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
