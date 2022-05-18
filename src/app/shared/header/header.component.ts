@@ -14,16 +14,7 @@ export class HeaderComponent implements OnInit {
   userLogged = this.authService.getUserLogged();
   isLogged = this.authService.isLogged();
 
-  constructor(private authService: AuthService) {
-    console.log(this.userLogged);
-  }
-
-  async signOut(){
-    console.log(`Cerrando Sesión ...`);
-    this.authService.signOut().then(res => {
-      console.log(res);
-    })
-  }
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     // Inicializamos los objetos del Sidenav (mobile responsive) y el Dropdown.
@@ -33,7 +24,7 @@ export class HeaderComponent implements OnInit {
     // Añadimos opciones al Dropdown.
     var dropdownInstance = M.Dropdown.init(dropdownElement, {
       coverTrigger: false,
-      closeOnClick: false
+      hover: true,
     });
   }
 }

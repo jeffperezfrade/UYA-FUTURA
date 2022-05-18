@@ -36,8 +36,15 @@
 </div>
 <!-- MOBILE MENU -->
 <ul class="sidenav" id="menu-responsive">
-  <li><a routerLink="/mi-cuenta"><i class="material-icons left">person</i>Mi cuenta</a></li>
-  <li><a href=""><i class="material-icons left">shopping_cart</i>Carrito</a></li>
+  <div *ngIf="userLogged|async as user; else notLogged">
+    <li><a routerLink="/mi-cuenta" *ngIf="userLogged|async"><i class="material-icons left">person</i>Mi Cuenta</a></li>  
+    <li><a href=""><i class="material-icons left">shopping_cart</i>Carrito</a></li>
+  </div>
+  
+  <ng-template #notLogged>
+    <li><a routerLink="/iniciar-sesion"><i class="material-icons left">person</i>Iniciar Sesión</a></li>
+    <li><a href=""><i class="material-icons left">shopping_cart</i>Carrito</a></li>
+  </ng-template>
   <li><a href="">Móviles</a></li>
   <li><a href="">Portátiles</a></li>
   <li><a href="">Consolas</a></li>
