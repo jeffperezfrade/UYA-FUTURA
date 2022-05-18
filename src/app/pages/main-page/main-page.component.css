@@ -6,3 +6,9 @@
   font-size: larger;
   font-weight: 600;
 }
+
+.preloader-wrapper{
+  margin-top: 20%;
+  margin-left: 50%;
+  margin-bottom: 20%;
+}

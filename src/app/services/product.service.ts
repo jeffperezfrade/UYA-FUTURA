@@ -21,5 +21,4 @@ export class ProductService {
     return this.firebase.collection('products').snapshotChanges();
     // return this.firebase.collection('products').get();
   }
-
 }
