@@ -26,6 +26,16 @@ export class ShoppingCartService {
     });
   }
 
+  deleteProduct(userId: string, productId: string) {
+    this.firebase.collection(`users/${userId}/shopping_cart`).doc(productId).delete()
+      .then(() => {
+        console.log('Producto eliminado correctamente.');
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
   getProducts(userId: string): Observable<any> {
     // snapshotChanges() se ejecuta cada vez que detecta un cambio.
     return this.firebase.collection(`users/${userId}/shopping_cart`).snapshotChanges();

@@ -14,6 +14,7 @@ export class ShoppingCartComponent implements OnInit {
   userCollectionId: string = '';
   cartProducts: Product[] = [];
   loadingSpinner: boolean = false;
+  totalPrice: number = 0;
 
   constructor(
     private shoppingCartService: ShoppingCartService,
@@ -24,9 +25,10 @@ export class ShoppingCartComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this.shoppingCartService.getProducts(this.userCollectionId).subscribe(doc => {
         doc.forEach((product: any) => {
+          this.totalPrice += Number(product.payload.doc.data().price);
           this.cartProducts.push(new Product(
             product.payload.doc.data().name,
-            product.payload.doc.data().price,
+            product.payload.doc.data().price, 
             product.payload.doc.data().description,
             product.payload.doc.data().img_url,
             product.payload.doc.id,
@@ -55,9 +57,18 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   deleteProduct(productId: string | undefined) {
+    if (productId != undefined) {
+      this.shoppingCartService.deleteProduct(this.userCollectionId, productId);
+    }
+    let auxArray: Product[] = [];
     this.cartProducts.forEach((product) => {
-      
+      if (product.id != productId) {
+        auxArray.push(product);
+      } else {
+        this.totalPrice -= Number(product.price);
+      }
     });
+    this.cartProducts = auxArray;
   }
 
   ngOnInit(): void {
