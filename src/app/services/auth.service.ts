@@ -27,6 +27,10 @@ export class AuthService {
     }
   }
 
+  async getUser(){
+    return await this.afauth.currentUser;
+  }
+
   signOut(){
     localStorage.clear();
     return this.afauth.signOut();

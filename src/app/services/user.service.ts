@@ -13,13 +13,12 @@ export class UserService {
   saveUser(user: User): Promise<any> {
     // Agrega un nuevo usuario a la colección de usuarios.
     // Si la colección no existe la crea y añade el usuario.
-    return this.firebase.collection('user').add(user);
+    return this.firebase.collection('users').add(user);
   }
 
   getUsers(): Observable<any> {
     // snapshotChanges() se ejecuta cada vez que detecta un cambio.
-    return this.firebase.collection('user').snapshotChanges();
+    return this.firebase.collection('users').snapshotChanges();
     // return this.firebase.collection('user').get();
   }
-
 }

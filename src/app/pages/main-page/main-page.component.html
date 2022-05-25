@@ -14,7 +14,7 @@
   </div>
   <div class="row">
     <div class="col s12 m6 l3" *ngFor="let product of this.productsDatabase">
-      <div class="card">
+      <div class="card" id="productCard">
         <div class="card-image">
           <img src="{{product.img_url}}">
         </div>
@@ -22,7 +22,9 @@
           <p class="product-title">{{product.name}}</p>
         </div>
         <div class="card-action center-align">
-          <a class="waves-effect waves-light blue accent-4 btn">Comprar</a>
+          <a (click)="addCart(product)" class="waves-effect waves-light blue accent-4 btn">
+            Añadir al carrito <i class="material-icons right">add_shopping_cart</i>
+          </a>
         </div>
       </div>
     </div>

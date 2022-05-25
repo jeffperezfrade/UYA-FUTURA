@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  { path: 'carrito', loadChildren: () => import('./pages/shopping-cart/shopping-cart.module').then(m => m.ShoppingCartModule) },
   { path: 'mi-cuenta', loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule) },
   { path: 'registrarse', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) },
   { path: 'iniciar-sesion', loadChildren: () => import('./pages/sign-in/sign-in.module').then(m => m.SignInModule) },

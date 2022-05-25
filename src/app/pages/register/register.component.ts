@@ -12,7 +12,6 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-
   form: FormGroup;
   loadingSpinner = false;
   emailsDatabase: string[] = [];
@@ -26,8 +25,7 @@ export class RegisterComponent implements OnInit {
     private router: Router
   ) {
     this.form = this.fb.group({
-      first_name: ['', Validators.required],
-      last_name: ['', Validators.required],
+      name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
@@ -37,19 +35,13 @@ export class RegisterComponent implements OnInit {
    */
   async register() {
     this.loadingSpinner = true;
-    await this.auth.createUserWithEmailAndPassword(
+    await this.auth
+      .createUserWithEmailAndPassword(
         this.form.value.email,
         this.form.value.password
       )
-      .then(() => {
-        this.toastr.success('Usuario añadido a Firebase!, Usuario registrado.');
-        // Evitamos que inicie sesion automáticamente.
-        this.auth.signOut();
-        this.loadingSpinner = false;
-        // Redirigimos al inicio de sesion.
-        this.router.navigate(['/iniciar-sesion']);
-      })
-      .catch( (error) => {
+      .then(() => {})
+      .catch((error) => {
         // Handle Errors here.
         this.error = error;
         var errorCode = error.code;
@@ -66,15 +58,40 @@ export class RegisterComponent implements OnInit {
         this.loadingSpinner = false;
         this.form.reset();
       });
-      // Actualizamos el nombre.
-      this.auth.currentUser.then((user) =>{
-        user?.updateProfile({
-          displayName: this.form.value.first_name + ' ' + this.form.value.last_name,
-        }).then(function() {
-          // Update successful.
-        }, function(error) {
-          // An error happened.
-      });
+    // Actualizamos el nombre.
+    this.auth.currentUser.then((user) => {
+      user
+        ?.updateProfile({
+          displayName: this.form.value.name,
+        })
+        .then(
+          function () {
+            // Update successful.
+          },
+          function (error) {
+            // An error happened.
+          }
+        );
+    });
+    // Añadimos el usuario a una colección de usuarios.
+    const user: User = {
+      name: this.form.value.name,
+      email: this.form.value.email,
+      password: this.form.value.password,
+    };
+    this.userService
+      .saveUser(user)
+      .then(() => {
+        this.toastr.success('Usuario añadido a Firebase!, Usuario registrado.');
+        console.log('Usuario añadido a colección de usuarios...');
+        // Evitamos que inicie sesion automáticamente.
+        this.auth.signOut();
+        this.loadingSpinner = false;
+        // Redirigimos al inicio de sesion.
+        this.router.navigate(['/iniciar-sesion']);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
   /**

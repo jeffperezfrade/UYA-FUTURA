@@ -10,10 +10,12 @@ export class Product {
     price: number,
     description: string,
     img_url: string,
+    id?: string,
   ) {
     this.name = name;
     this.price = price;
     this.description = description;
     this.img_url = img_url;
+    this.id = id;
   }
 }

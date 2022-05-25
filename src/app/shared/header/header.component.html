@@ -6,14 +6,15 @@
         <i class="material-icons">menu</i>
       </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
+        
         <div *ngIf="userLogged|async as user; else notLogged">
           <li><a routerLink="/mi-cuenta" *ngIf="userLogged|async"><i class="material-icons left">person</i>Mi Cuenta</a></li>  
-          <li><a href=""><i class="material-icons left">shopping_cart</i>Carrito</a></li>
+          <li><a routerLink="/carrito"><i class="material-icons left">shopping_cart</i>Carrito</a></li>
         </div>
         
         <ng-template #notLogged>
           <li><a routerLink="/iniciar-sesion"><i class="material-icons left">person</i>Iniciar Sesión</a></li>
-          <li><a href=""><i class="material-icons left">shopping_cart</i>Carrito</a></li>
+          <li><a routerLink="/iniciar-sesion"><i class="material-icons left">shopping_cart</i>Carrito</a></li>
         </ng-template>
       </ul>
     </div>

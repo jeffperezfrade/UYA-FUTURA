@@ -5,13 +5,9 @@
   <div class="row">
     <form class="col s12" [formGroup]="form" (ngSubmit)="register()">
       <div class="row">
-        <div class="input-field col s6">
-          <input formControlName="first_name" id="first_name" type="text" class="validate" required>
-          <label for="first_name"><b>Nombre</b></label>
-        </div>
-        <div class="input-field col s6">
-          <input formControlName="last_name" id="last_name" type="text" class="validate" required>
-          <label for="last_name"><b>Apellidos</b></label>
+        <div class="input-field col s12">
+          <input formControlName="name" id="name" type="text" class="validate" required>
+          <label for="first_name"><b>Nombre Completo</b></label>
         </div>
       </div>
       <div class="row">

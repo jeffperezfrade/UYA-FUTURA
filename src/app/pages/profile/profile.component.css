@@ -3,5 +3,16 @@
 }
 
 .entry-msg{
+  font-size: xx-large;
+}
+
+.mod-title{
   font-size: x-large;
+  text-decoration: underline;
+  text-decoration-color: #448aff;
+}
+
+label{
+  color: black;
+  font-size: larger;
 }
