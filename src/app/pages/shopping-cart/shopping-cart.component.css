@@ -1,0 +1,11 @@
+.page-title{
+  font-size: x-large;
+  text-decoration: underline;
+  text-decoration-color: #448aff;
+}
+
+.preloader-wrapper{
+  margin-top: 20%;
+  margin-left: 50%;
+  margin-bottom: 20%;
+}

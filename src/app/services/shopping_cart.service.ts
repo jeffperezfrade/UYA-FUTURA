@@ -21,6 +21,9 @@ export class ShoppingCartService {
     .then(res => {
       console.log(res);
     })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 
   getProducts(userId: string): Observable<any> {
