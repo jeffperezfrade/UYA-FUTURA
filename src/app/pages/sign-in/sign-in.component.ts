@@ -28,12 +28,12 @@ export class SignInComponent implements OnInit {
   async signIn() {
     this.loadingSpinner = true;
     try {
-      await this.auth.signInWithEmailAndPassword(this.email, this.password);
-      this.loadingSpinner = false;
-      this.toastr.success('Se ha iniciado sesión!');
-      this.router.navigate(['/']).then(() => {
-        window.location.reload();
-      });
+      //await this.auth.signInWithEmailAndPassword(this.email, this.password);
+      this.auth.signInWithEmailAndPassword(this.email, this.password).then(() => {
+        this.loadingSpinner = false;
+        this.toastr.success('Se ha iniciado sesión!');
+        this.router.navigate(['/']).then(() => {});
+      })
     } catch (err) {
       console.log(`Sign In login Error: ${err}`);
       this.error = err;

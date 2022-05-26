@@ -5,6 +5,19 @@
   border-width: 0.5px;
 }
 
+nav{
+  background-color: white;
+  box-shadow: none;
+}
+
+.breadcrumb:before {
+  color: #448aff;
+}
+
+.breadcrumb, .breadcrumb:last-child {
+  color: #000000;
+}
+
 .register-btn:hover{
   color: white;
   background-color:#448aff;

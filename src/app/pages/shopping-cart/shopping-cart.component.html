@@ -13,6 +13,14 @@
     </div>
   </div>
   <div *ngIf="!this.loadingSpinner">
+    <nav>
+      <div class="nav-wrapper">
+        <div class="col s12">
+          <a routerLink="/" class="breadcrumb">Inicio</a>
+          <a class="breadcrumb"><b>Carrito</b></a>
+        </div>
+      </div>
+    </nav>
     <div class="row">
       <p class="page-title"> Tus productos en el Carrito</p>
       <div class="col s12 m6 l3" *ngFor="let product of this.cartProducts">

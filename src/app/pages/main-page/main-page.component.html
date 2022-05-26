@@ -12,19 +12,22 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col s12 m6 l3" *ngFor="let product of this.productsDatabase">
-      <div class="card" id="productCard">
-        <div class="card-image">
-          <img src="{{product.img_url}}">
-        </div>
-        <div class="card-content center-align">
-          <p class="product-title">{{product.name}}</p>
-        </div>
-        <div class="card-action center-align">
-          <a (click)="addCart(product)" class="waves-effect waves-light blue accent-4 btn">
-            Añadir <i class="material-icons right">add_shopping_cart</i>
-          </a>
+  <div *ngIf="!this.loadingSpinner">
+    <h3 class="page-title">Productos de la Tienda</h3>
+    <div class="row">
+      <div class="col s12 m6 l3" *ngFor="let product of this.productsDatabase">
+        <div class="card" id="productCard">
+          <div class="card-image">
+            <img src="{{product.img_url}}">
+          </div>
+          <div class="card-content center-align">
+            <p class="product-title">{{product.name}}</p>
+          </div>
+          <div class="card-action center-align">
+            <a (click)="addCart(product)" class="waves-effect waves-light blue accent-4 btn">
+              Añadir <i class="material-icons right">add_shopping_cart</i>
+            </a>
+          </div>
         </div>
       </div>
     </div>

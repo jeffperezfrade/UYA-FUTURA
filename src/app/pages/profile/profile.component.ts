@@ -23,10 +23,10 @@ export class ProfileComponent implements OnInit {
 
   signOut(){
     console.log(`Cerrando Sesión ...`);
-    this.auth.signOut();
-    this.router.navigate(['/']).then(() => {
-      window.location.reload();
+    this.auth.signOut().then(() => {
+      this.router.navigate(['/']).then(() => {});
     });
+    
   }
 
   saveChanges(){

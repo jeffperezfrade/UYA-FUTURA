@@ -7,6 +7,20 @@ hr{
   display: none;
 }
 
+nav{
+  margin-top: 15px;
+  background-color: white;
+  box-shadow: none;
+}
+
+.breadcrumb:before {
+  color: #448aff;
+}
+
+.breadcrumb, .breadcrumb:last-child {
+  color: #000000;
+}
+
 .red-info{
   display: flex;
   color: rgb(141, 20, 20);
@@ -19,5 +33,9 @@ hr{
 .error-div{
   color: rgb(172, 28, 28);
   margin-bottom: 20px;
+  font-size: larger;
+}
+
+.manual-text {
   font-size: larger;
 }

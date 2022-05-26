@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/Product';
 import { AuthService } from 'src/app/services/auth.service';
@@ -22,12 +23,14 @@ export class MainPageComponent implements OnInit {
     private auth: AuthService,
     private userService: UserService,
     private shoppingCartService: ShoppingCartService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private router: Router) { }
 
   getProducts() {
     return new Promise((resolve, reject) => {
       console.log('Cargando productos de Firebase ...');
       this.productService.getProducts().subscribe((doc) => {
+        this.productsDatabase = [];
         doc.forEach((product: any) => {
           this.productsDatabase.push(new Product(
             product.payload.doc.data().name,
@@ -60,13 +63,17 @@ export class MainPageComponent implements OnInit {
   }
 
   addCart(product: Product) {
-    this.shoppingCartService.addProduct(product, this.userCollectionId).then(() => {
-      this.toastr.success('Añadido al carrito!', '', {timeOut: 800});
-    })
-    .catch((err) => {
-      console.log(err);
-      this.toastr.error('Ha ocurrido un error');
-    })
+    if (this.userCollectionId == '') {
+       this.router.navigate(['/iniciar-sesion']);
+    } else {
+      this.shoppingCartService.addProduct(product, this.userCollectionId).then(() => {
+        this.toastr.success('Añadido al carrito!', '', {timeOut: 800});
+      })
+      .catch((err) => {
+        console.log(err);
+        this.toastr.error('Ha ocurrido un error');
+      })
+    }
   }
 
   ngOnInit(): void {

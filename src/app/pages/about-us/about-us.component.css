@@ -1,0 +1,45 @@
+nav{
+  margin-top: 15px;
+  background-color: white;
+  box-shadow: none;
+}
+
+.breadcrumb:before {
+  color: #448aff;
+}
+
+.breadcrumb, .breadcrumb:last-child {
+  color: #000000;
+}
+
+.page-title {
+  text-decoration: underline;
+  text-decoration-color: #448aff;
+}
+
+.person-card {
+  background-color: #9abcf1;
+  padding: 10px;
+  border: solid 2px;
+  border-color: black;
+  border-radius: 20px;
+}
+
+.person-description {
+  font-size: large;
+  color: black;
+}
+
+.person-name {
+  color: black;
+  font-size: x-large;
+}
+
+.about-us-photo {
+  max-width: 150px;
+  border-radius: 30px;
+}
+
+.manual-text {
+  font-size: larger;
+}

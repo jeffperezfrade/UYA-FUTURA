@@ -12,3 +12,8 @@
   margin-left: 50%;
   margin-bottom: 20%;
 }
+
+.page-title{
+  text-decoration: underline;
+  text-decoration-color: #448aff;
+}

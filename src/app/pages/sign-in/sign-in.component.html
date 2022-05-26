@@ -1,4 +1,12 @@
 <div class="container section">
+  <nav>
+    <div class="nav-wrapper">
+      <div class="col s12">
+        <a routerLink="/" class="breadcrumb">Inicio</a>
+        <a class="breadcrumb"><b>Inicio de Sesión</b></a>
+      </div>
+    </div>
+  </nav>
   <div class="row">
     <div class="card hoverable col s12 m12 l8 offset-l2">
       <form>
@@ -35,8 +43,9 @@
           <label for="password"><b>Contraseña</b></label>
         </div>
         <div class="error-div" *ngIf="error"> &bull; El email o la contraseña son incorrectos</div>
-        <button class="btn waves-effect waves-light blue accent-2 col s12 l10 offset-l1" (click)="signIn()">INICIAR
-          SESIÓN</button>
+        <button class="btn waves-effect waves-light blue accent-2 col s12 l10 offset-l1" (click)="signIn()">
+          INICIAR SESIÓN
+        </button>
         <button class="btn waves-effect waves-light grey darken-1 col s12 l10 offset-l1"
           (click)="loginWithGoogle()">INICIAR SESIÓN CON GOOGLE</button>
         <a routerLink="/registrarse" class="register-btn btn col s12 l10 offset-l1">REGISTRARSE</a>

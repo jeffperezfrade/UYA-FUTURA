@@ -12,6 +12,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { environment } from '../environments/environment';
+import { ManualComponent } from './pages/manual/manual.component';
 
 @NgModule({
   declarations: [

@@ -1,4 +1,12 @@
 <div class="container">
+  <nav>
+    <div class="nav-wrapper">
+      <div class="col s12">
+        <a routerLink="/" class="breadcrumb">Inicio</a>
+        <a class="breadcrumb"><b>Mi Cuenta</b></a>
+      </div>
+    </div>
+  </nav>
   <div class="row">
     <div *ngIf="auth.user | async as user" class="col s6 l8">
       <p class="entry-msg">Hola <b>{{user.displayName}}</b> !</p>
@@ -18,7 +26,7 @@
             <label *ngIf="auth.user | async as user" for="first_name"><b>{{user.displayName}}</b></label>
           </div>
         </div>
-        <button (click)="saveChanges()" class="btn waves-effect waves-light blue accent-2 hoverable col l3 s10" name="action">Guardar Cambios
+        <button (click)="saveChanges()" class="btn-large waves-effect waves-light blue darken-2 hoverable col l3 s10" name="action">Guardar Cambios
           <i class="material-icons right">system_update_alt</i>
       </button>
       </form>
