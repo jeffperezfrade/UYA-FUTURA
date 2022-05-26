@@ -10,30 +10,18 @@ export class ShoppingCartService {
 
   constructor(private firebase: AngularFirestore) {}
 
-  addProduct(product: Product, userId: string) {
-    console.log(`users/${userId}/shopping_cart/`);
-    this.firebase.collection(`users/${userId}/shopping_cart`).doc(product.id).set({
+  addProduct(product: Product, userId: string): Promise<any> {
+    console.log(`Agregando a ruta -> users/${userId}/shopping_cart/`);
+    return this.firebase.collection(`users/${userId}/shopping_cart`).doc(product.id).set({
       name: product.name,
       description: product.description,
       price: product.price,
       img_url: product.img_url
-    })
-    .then(res => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log(err);
     });
   }
 
-  deleteProduct(userId: string, productId: string) {
-    this.firebase.collection(`users/${userId}/shopping_cart`).doc(productId).delete()
-      .then(() => {
-        console.log('Producto eliminado correctamente.');
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+  deleteProduct(userId: string, productId: string): Promise<any> {
+    return this.firebase.collection(`users/${userId}/shopping_cart`).doc(productId).delete();
   }
 
   getProducts(userId: string): Observable<any> {

@@ -12,8 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  
-  // form: FormGroup;
+
   loadingSpinner = false;
   error: any;
   email: any;
@@ -24,10 +23,6 @@ export class SignInComponent implements OnInit {
     private router: Router,
     public auth: AngularFireAuth,
     private toastr: ToastrService) { 
-    // this.form = this.fb.group({
-    //   email: ['', [Validators.required, Validators.email]],
-    //   password: ['', Validators.required],
-    // });
    }
 
   async signIn() {

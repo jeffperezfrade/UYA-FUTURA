@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/Product';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -20,7 +21,8 @@ export class MainPageComponent implements OnInit {
     private productService: ProductService,
     private auth: AuthService,
     private userService: UserService,
-    private shoppingCartService: ShoppingCartService) { }
+    private shoppingCartService: ShoppingCartService,
+    private toastr: ToastrService) { }
 
   getProducts() {
     return new Promise((resolve, reject) => {
@@ -58,7 +60,13 @@ export class MainPageComponent implements OnInit {
   }
 
   addCart(product: Product) {
-    this.shoppingCartService.addProduct(product, this.userCollectionId);
+    this.shoppingCartService.addProduct(product, this.userCollectionId).then(() => {
+      this.toastr.success('Añadido al carrito!', '', {timeOut: 800});
+    })
+    .catch((err) => {
+      console.log(err);
+      this.toastr.error('Ha ocurrido un error');
+    })
   }
 
   ngOnInit(): void {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/Product';
 import { AuthService } from 'src/app/services/auth.service';
 import { ShoppingCartService } from 'src/app/services/shopping_cart.service';
@@ -19,11 +20,14 @@ export class ShoppingCartComponent implements OnInit {
   constructor(
     private shoppingCartService: ShoppingCartService,
     private auth: AuthService,
-    private userService: UserService) {}
+    private userService: UserService,
+    private toastr: ToastrService) {}
 
   getProducts() {
     return new Promise((resolve, reject) => {
       this.shoppingCartService.getProducts(this.userCollectionId).subscribe(doc => {
+        this.cartProducts = [];
+        this.totalPrice = 0;
         doc.forEach((product: any) => {
           this.totalPrice += Number(product.payload.doc.data().price);
           this.cartProducts.push(new Product(
@@ -58,17 +62,24 @@ export class ShoppingCartComponent implements OnInit {
 
   deleteProduct(productId: string | undefined) {
     if (productId != undefined) {
-      this.shoppingCartService.deleteProduct(this.userCollectionId, productId);
+      this.shoppingCartService.deleteProduct(this.userCollectionId, productId).then(() => {
+        this.getProducts().then(res => {
+          console.log(res);
+        });
+      });
     }
-    let auxArray: Product[] = [];
+  }
+
+  buyCart() {
     this.cartProducts.forEach((product) => {
-      if (product.id != productId) {
-        auxArray.push(product);
-      } else {
-        this.totalPrice -= Number(product.price);
+      if (product.id != undefined) {
+        this.shoppingCartService.deleteProduct(this.userCollectionId, product.id).then(() => {});
       }
     });
-    this.cartProducts = auxArray;
+    this.toastr.success('Productos comprados con éxito!', '', {timeOut: 800});
+    this.getProducts().then(res => {
+      console.log(res);
+    });
   }
 
   ngOnInit(): void {
