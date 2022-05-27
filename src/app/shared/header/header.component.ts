@@ -17,14 +17,8 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    // Inicializamos los objetos del Sidenav (mobile responsive) y el Dropdown.
+    // Inicializamos los objetos del Sidenav (mobile responsive).
     var sidenavElement = document.querySelectorAll('.sidenav');
-    var dropdownElement = document.querySelectorAll('.dropdown-trigger');
     var sidenavInstance = M.Sidenav.init(sidenavElement);
-    // Añadimos opciones al Dropdown.
-    var dropdownInstance = M.Dropdown.init(dropdownElement, {
-      coverTrigger: false,
-      hover: true,
-    });
   }
 }
