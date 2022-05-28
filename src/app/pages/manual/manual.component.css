@@ -33,3 +33,7 @@ nav{
 .back-btn {
   margin-bottom: 10px;
 }
+
+:focus {
+  outline: 5px solid rgb(255, 111, 0);   
+}

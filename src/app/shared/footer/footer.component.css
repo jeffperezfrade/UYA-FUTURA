@@ -10,3 +10,7 @@ a:hover{
 h4{
   color: white;
 }
+
+:focus {
+  outline: 5px solid rgb(255, 111, 0);   
+}

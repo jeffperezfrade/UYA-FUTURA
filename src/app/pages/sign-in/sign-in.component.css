@@ -46,3 +46,7 @@ nav{
   color: rgb(172, 28, 28);
   text-align: center;
 }
+
+:focus {
+  outline: 5px solid rgb(255, 111, 0);   
+}

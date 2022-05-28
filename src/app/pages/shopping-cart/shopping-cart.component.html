@@ -22,18 +22,18 @@
       </div>
     </nav>
     <div class="row">
-      <p class="page-title"> Tus productos en el Carrito</p>
+      <h3 tabindex="0" class="page-title"> Tus productos en el Carrito</h3>
       <div class="col s12 m6 l3" *ngFor="let product of this.cartProducts">
         <div class="card" id="productCard">
           <div class="card-image">
-            <img src="{{product.img_url}}">
+            <img tabindex="0" src="{{product.img_url}}" alt="{{product.name}}" title="{{product.name}}">
           </div>
           <div class="card-content center-align">
-            <p class="product-title">{{product.name}}</p>
-            <p><b>{{product.price}}€</b></p>
+            <p tabindex="0" class="product-title">{{product.name}}</p>
+            <p tabindex="0"><b>{{product.price}}€</b></p>
           </div>
           <div class="card-action center-align">
-            <a (click)="deleteProduct(product.id)" class="waves-effect waves-light blue accent-4 btn">
+            <a tabindex="0" (click)="deleteProduct(product.id)" class="waves-effect waves-light blue accent-4 btn">
               Eliminar <i class="material-icons right">remove_shopping_cart</i>
             </a>
           </div>
@@ -41,17 +41,17 @@
       </div>
     </div>
     <div *ngIf="this.cartProducts.length == 0">
-      <p class="no-items-msg"> No tienes productos en el carrito! </p>
-      <p class="tip-msg">&bull; <b>Consejo:</b> Puedes agregarlos desde la página principal.</p>
+      <p tabindex="0" class="no-items-msg"> No tienes productos en el carrito! </p>
+      <p tabindex="0" class="tip-msg">&bull; <b>Consejo:</b> Puedes agregarlos desde la página principal.</p>
     </div>
     <div class="resumen-compra">
-      <p class="page-title">Resumen de compra</p>
+      <h3 tabindex="0" class="page-title">Resumen de compra</h3>
       <div class="pay-card row">
         <div class="col s12 m12 l8">
-          <p class="total-pagar">Total a pagar: <b>{{this.totalPrice}}€</b></p>
+          <p tabindex="0" class="total-pagar">Total a pagar: <b>{{this.totalPrice}}€</b></p>
         </div>
         <div *ngIf="!(this.cartProducts.length == 0)" class="col s12 m12 l3">
-          <a (click)="buyCart()" class="pay-btn green darken-1 waves-effect waves-light btn-large">Pagar Compra
+          <a tabindex="0" (click)="buyCart()" class="pay-btn green darken-1 waves-effect waves-light btn-large">Pagar Compra
             <i class="material-icons right">credit_card</i>
           </a>
         </div>

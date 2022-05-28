@@ -39,3 +39,7 @@ nav{
 .manual-text {
   font-size: larger;
 }
+
+:focus {
+  outline: 5px solid rgb(255, 111, 0);   
+}

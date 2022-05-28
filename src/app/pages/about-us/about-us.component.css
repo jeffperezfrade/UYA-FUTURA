@@ -1,3 +1,7 @@
+:focus {
+  outline: 5px solid rgb(255, 111, 0);   
+}
+
 nav{
   margin-top: 15px;
   background-color: white;
@@ -41,5 +45,5 @@ nav{
 }
 
 .manual-text {
-  font-size: larger;
+  font-size: x-large;
 }

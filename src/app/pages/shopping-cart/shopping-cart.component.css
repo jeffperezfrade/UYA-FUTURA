@@ -13,7 +13,6 @@ nav{
 }
 
 .page-title {
-  font-size: x-large;
   text-decoration: underline;
   text-decoration-color: #448aff;
 }
@@ -53,4 +52,8 @@ nav{
   padding: 10px;
   border-left: 6px solid #2979ff;
   background-color: #bbdefb;
+}
+
+:focus {
+  outline: 5px solid rgb(255, 111, 0);   
 }
