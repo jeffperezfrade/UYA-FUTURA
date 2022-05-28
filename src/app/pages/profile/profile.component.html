@@ -12,8 +12,9 @@
       <p tabindex="0" class="entry-msg">Hola <b>{{user.displayName}}</b> !</p>
     </div>
     <div class="col s6 l4">
-      <a tabindex="0" (click)="signOut()" class="red lighten-1 waves-effect waves-light btn-large logout-btn"><i
-          class="material-icons left">exit_to_app</i>Cerrar Sesión</a>
+      <a aria-label="Cerrar Sesion" tabindex="0" (click)="signOut()" class="red lighten-1 waves-effect waves-light btn-large logout-btn"><i
+          class="material-icons left">exit_to_app</i>Cerrar Sesión
+      </a>
     </div>
   </div>
   <div class="card-content">
@@ -22,14 +23,14 @@
       <form class="col s12" [formGroup]="form">
         <div class="row">
           <div class="input-field col s12">
-            <input formControlName="name" name="name" id="first_name" type="text" class="validate">
+            <input formControlName="name" name="name" id="first_name" type="text" class="validate" aria-required="true">
             <label *ngIf="auth.user | async as user" for="first_name"><b>{{user.displayName}}</b></label>
           </div>
         </div>
-        <button tabindex="0" (click)="saveChanges()" class="btn-large waves-effect waves-light blue darken-2 hoverable col l3 s10" name="action">Guardar Cambios
+        <button aria-label="Guardar Cambios" tabindex="0" (click)="saveChanges()" class="btn-large waves-effect waves-light blue darken-2 hoverable col l3 s10" name="action">Guardar Cambios
           <i class="material-icons right">system_update_alt</i>
       </button>
-      <a tabindex="0" routerLink="/" class="back-btn blue lighten-2 waves-effect waves-light btn-large">
+      <a aria-label="Volver al Inicio" tabindex="0" routerLink="/" class="back-btn blue lighten-2 waves-effect waves-light btn-large">
         <i class="material-icons right">arrow_back</i>
         Volver al Inicio
       </a>

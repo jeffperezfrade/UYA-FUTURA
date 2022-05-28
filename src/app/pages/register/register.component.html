@@ -15,26 +15,26 @@
     <form class="col s12" [formGroup]="form" (ngSubmit)="register()">
       <div class="row">
         <div class="input-field col s12">
-          <input formControlName="name" id="name" type="text" class="validate" required>
+          <input formControlName="name" id="name" type="text" class="validate" aria-required="true" required>
           <label for="first_name"><b>Nombre Completo</b></label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input formControlName="email" id="email" type="email" class="validate" required>
+          <input formControlName="email" id="email" type="email" class="validate" aria-required="true" required>
           <label for="email"><b>Email</b></label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input formControlName="password" id="password" type="password" class="validate" required>
+          <input formControlName="password" id="password" type="password" class="validate" aria-required="true" required>
           <label for="password"><b>Contraseña</b></label>
           <p class="password-info" [class.red-info]="this.form.get('password')?.invalid && this.form.get('password')?.touched">	&bull; La contraseña debe tener al menos 8 caracteres.</p>
         </div>
       </div>
       <div class="error-div" *ngIf="error"> &bull; El email ya ha sido registrado</div>
       <div class="row">
-        <button [disabled]="form.invalid" class="btn waves-effect waves-light blue darken-2 hoverable col l3 s10" name="action">Enviar
+        <button aria-label="Enviar Formulario de Registro" [disabled]="form.invalid" class="btn waves-effect waves-light blue darken-2 hoverable col l3 s10" name="action">Enviar
             <i class="material-icons right">send</i>
         </button>
         <div *ngIf="this.loadingSpinner" class="preloader-wrapper small active">

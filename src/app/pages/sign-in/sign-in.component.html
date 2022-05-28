@@ -33,22 +33,22 @@
         <div class="input-field col s12">
           <i class="material-icons prefix">mail_outline</i>
           <!-- <input formControlName="email" class="validate" id="email" type="email" class="validate" required> -->
-          <input [(ngModel)]="email" name="email" class="validate" id="email" type="email" class="validate" required>
+          <input [(ngModel)]="email" name="email" class="validate" id="email" type="email" class="validate" aria-required="true" required>
           <label for="email"><b>Email</b></label>
         </div>
         <div class="input-field col s12">
           <i class="material-icons prefix">lock_outline</i>
           <!-- <input formControlName="password" id="password" type="password" class="validate" required> -->
-          <input [(ngModel)]="password" name="password" id="password" type="password" class="validate" required>
+          <input [(ngModel)]="password" name="password" id="password" type="password" class="validate" aria-required="true" required>
           <label for="password"><b>Contraseña</b></label>
         </div>
         <div class="error-div" *ngIf="error"> &bull; El email o la contraseña son incorrectos</div>
-        <button class="btn waves-effect waves-light blue accent-2 col s12 l10 offset-l1" (click)="signIn()">
+        <button aria-label="Iniciar Sesion" class="btn waves-effect waves-light blue accent-2 col s12 l10 offset-l1" (click)="signIn()">
           INICIAR SESIÓN
         </button>
-        <button class="btn waves-effect waves-light grey darken-1 col s12 l10 offset-l1"
+        <button aria-label="Iniciar Sesion con Google" class="btn waves-effect waves-light grey darken-1 col s12 l10 offset-l1"
           (click)="loginWithGoogle()">INICIAR SESIÓN CON GOOGLE</button>
-        <a routerLink="/registrarse" class="register-btn btn col s12 l10 offset-l1">REGISTRARSE</a>
+        <a aria-label="Registrarse" routerLink="/registrarse" class="register-btn btn col s12 l10 offset-l1">REGISTRARSE</a>
       </form>
     </div>
   </div>

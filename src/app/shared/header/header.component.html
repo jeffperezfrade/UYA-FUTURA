@@ -8,17 +8,17 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         
         <div *ngIf="userLogged|async as user; else notLogged">
-          <li><a routerLink="/manual"><i class="material-icons left">settings</i>Manual</a></li>
-          <li><a routerLink="/sobre-nosotros"><i class="material-icons left">supervisor_account</i>Sobre nosotros</a></li>
-          <li><a routerLink="/mi-cuenta" *ngIf="userLogged|async"><i class="material-icons left">person</i>Mi Cuenta</a></li>  
-          <li><a routerLink="/carrito"><i class="material-icons left">shopping_cart</i>Carrito</a></li>
+          <li><a role="menuitem" routerLink="/manual"><i class="material-icons left">settings</i>Manual</a></li>
+          <li><a role="menuitem" routerLink="/sobre-nosotros"><i class="material-icons left">supervisor_account</i>Sobre nosotros</a></li>
+          <li><a role="menuitem" routerLink="/mi-cuenta" *ngIf="userLogged|async"><i class="material-icons left">person</i>Mi Cuenta</a></li>  
+          <li><a role="menuitem" routerLink="/carrito"><i class="material-icons left">shopping_cart</i>Carrito</a></li>
         </div>
         
         <ng-template #notLogged>
-          <li><a routerLink="/manual"><i class="material-icons left">settings</i>Manual</a></li>
-          <li><a routerLink="/sobre-nosotros"><i class="material-icons left">supervisor_account</i>Sobre nosotros</a></li>
-          <li><a routerLink="/iniciar-sesion"><i class="material-icons left">person</i>Iniciar Sesión</a></li>
-          <li><a routerLink="/iniciar-sesion"><i class="material-icons left">shopping_cart</i>Carrito</a></li>
+          <li><a role="menuitem" routerLink="/manual"><i class="material-icons left">settings</i>Manual</a></li>
+          <li><a role="menuitem" routerLink="/sobre-nosotros"><i class="material-icons left">supervisor_account</i>Sobre nosotros</a></li>
+          <li><a role="menuitem" routerLink="/iniciar-sesion"><i class="material-icons left">person</i>Iniciar Sesión</a></li>
+          <li><a role="menuitem" routerLink="/iniciar-sesion"><i class="material-icons left">shopping_cart</i>Carrito</a></li>
         </ng-template>
       </ul>
     </div>
@@ -28,13 +28,13 @@
   <nav class="blue accent-3 nav-center">
     <div class="nav-wrapper container">
       <ul id="nav-mobile" class="hide-on-med-and-down">
-        <li><a href="">Móviles</a></li>
-        <li><a href="">Portátiles</a></li>
-        <li><a href="">Consolas</a></li>
-        <li><a href="">Electrodomésticos</a></li>
-        <li><a href="">Videojuegos</a></li>
-        <li><a href="">Sobremesas</a></li>
-        <li><a href="">Ofertas</a></li>
+        <li><a role="menuitem" href="">Móviles</a></li>
+        <li><a role="menuitem" href="">Portátiles</a></li>
+        <li><a role="menuitem" href="">Consolas</a></li>
+        <li><a role="menuitem" href="">Electrodomésticos</a></li>
+        <li><a role="menuitem" href="">Videojuegos</a></li>
+        <li><a role="menuitem" href="">Sobremesas</a></li>
+        <li><a role="menuitem" href="">Ofertas</a></li>
       </ul>
     </div>
   </nav>
@@ -42,20 +42,20 @@
 <!-- MOBILE MENU -->
 <ul class="sidenav" id="menu-responsive">
   <div *ngIf="userLogged|async as user; else notLogged">
-    <li><a routerLink="/mi-cuenta" *ngIf="userLogged|async"><i class="material-icons left">person</i>Mi Cuenta</a></li>  
-    <li><a routerLink="/carrito"><i class="material-icons left">shopping_cart</i>Carrito</a></li>
+    <li><a role="menuitem" routerLink="/mi-cuenta" *ngIf="userLogged|async"><i class="material-icons left">person</i>Mi Cuenta</a></li>  
+    <li><a role="menuitem" routerLink="/carrito"><i class="material-icons left">shopping_cart</i>Carrito</a></li>
   </div>
   
   <ng-template #notLogged>
-    <li><a routerLink="/iniciar-sesion"><i class="material-icons left">person</i>Iniciar Sesión</a></li>
-    <li><a routerLink="/iniciar-sesion"><i class="material-icons left">shopping_cart</i>Carrito</a></li>
+    <li><a role="menuitem" routerLink="/iniciar-sesion"><i class="material-icons left">person</i>Iniciar Sesión</a></li>
+    <li><a role="menuitem" routerLink="/iniciar-sesion"><i class="material-icons left">shopping_cart</i>Carrito</a></li>
   </ng-template>
-  <li><a href="">Móviles</a></li>
-  <li><a href="">Portátiles</a></li>
-  <li><a href="">Consolas</a></li>
-  <li><a href="">Electrodomésticos</a></li>
-  <li><a href="">Videojuegos</a></li>
-  <li><a href="">Sobremesas</a></li>
-  <li><a href="">Ofertas</a></li>
+  <li><a role="menuitem" href="">Móviles</a></li>
+  <li><a role="menuitem" href="">Portátiles</a></li>
+  <li><a role="menuitem" href="">Consolas</a></li>
+  <li><a role="menuitem" href="">Electrodomésticos</a></li>
+  <li><a role="menuitem" href="">Videojuegos</a></li>
+  <li><a role="menuitem" href="">Sobremesas</a></li>
+  <li><a role="menuitem" href="">Ofertas</a></li>
 </ul>
 <!-- END OF MOBILE MENU -->
