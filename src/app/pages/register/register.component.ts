@@ -40,7 +40,30 @@ export class RegisterComponent implements OnInit {
         this.form.value.email,
         this.form.value.password
       )
-      .then(() => {})
+      .then(() => {
+        // Añadimos el usuario a una colección de usuarios.
+        const user: User = {
+          name: this.form.value.name,
+          email: this.form.value.email,
+          password: this.form.value.password,
+        };
+        this.userService
+          .saveUser(user)
+          .then(() => {
+            this.toastr.success(
+              'Usuario añadido a Firebase!, Usuario registrado.'
+            );
+            console.log('Usuario añadido a colección de usuarios...');
+            // Evitamos que inicie sesion automáticamente.
+            this.auth.signOut();
+            this.loadingSpinner = false;
+            // Redirigimos al inicio de sesion.
+            this.router.navigate(['/iniciar-sesion']);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
       .catch((error) => {
         // Handle Errors here.
         this.error = error;
@@ -73,26 +96,6 @@ export class RegisterComponent implements OnInit {
           }
         );
     });
-    // Añadimos el usuario a una colección de usuarios.
-    const user: User = {
-      name: this.form.value.name,
-      email: this.form.value.email,
-      password: this.form.value.password,
-    };
-    this.userService
-      .saveUser(user)
-      .then(() => {
-        this.toastr.success('Usuario añadido a Firebase!, Usuario registrado.');
-        console.log('Usuario añadido a colección de usuarios...');
-        // Evitamos que inicie sesion automáticamente.
-        this.auth.signOut();
-        this.loadingSpinner = false;
-        // Redirigimos al inicio de sesion.
-        this.router.navigate(['/iniciar-sesion']);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   }
   /**
    * Indica si el email esta disponible o no.
